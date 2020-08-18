@@ -2,44 +2,28 @@
 
 namespace LumberjackVsMonsters
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IInitializable
     {
-        [SerializeField] private Camera camera;
-        [SerializeField] private BaseData[] data;
-        private MonoBehaviour[] _behaviors;
-        private Vault<BaseData> _dataVault;
-        private Vault<MonoBehaviour> _behaviorVault;
-        private UpdateSystem _updateSystem;
+        [SerializeField] private int maxHealth = 100;
+        [SerializeField] private int healthRecovery = 2;
+        [SerializeField] private AudioSource weaponAudio;
+        private BehaviorInitializer _behaviorInitializer;
+        private int _health;
 
-        public Vault<BaseData> DataVault => _dataVault;
-
-        public Vault<MonoBehaviour> BehaviorVault => _behaviorVault;
-
-        private void Awake()
+        public int Health
         {
-            _dataVault = new Vault<BaseData>(data);
-            _dataVault.SetValue(camera);
-            _dataVault.SetValue(gameObject);
-            _dataVault.SetValue(transform);
-            _behaviors = GetComponents<MonoBehaviour>();
-            _behaviorVault = new Vault<MonoBehaviour>(_behaviors);
-            _updateSystem = Locator.GetSystem<UpdateSystem>();
+            get => _health;
+            set => _health = value;
         }
 
-        private void OnEnable()
+        public void Initialize()
         {
-            foreach (var behavior in _behaviors)
-            {
-                _updateSystem.Add(behavior);
-            }
+            _health = maxHealth;
         }
 
-        private void OnDisable()
+        public void Hit()
         {
-            foreach (var behavior in _behaviors)
-            {
-                _updateSystem.Remove(behavior);
-            }
+            weaponAudio.Play();
         }
     }
 }

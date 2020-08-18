@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7775213757151879462}
   - component: {fileID: 8476500952965585139}
   - component: {fileID: 7817223448051148525}
+  - component: {fileID: -8780783987319764711}
+  - component: {fileID: -4367869751120367013}
   - component: {fileID: 5300643092293188138}
   m_Layer: 0
   m_Name: Wood_4
@@ -82,6 +84,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &-8780783987319764711
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616944266829916862}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &-4367869751120367013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616944266829916862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f40093ee0d4a258c9e7d0539e989be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5300643092293188138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e28142de3067d14fb556e419c0a3f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
-  amActive: 1
+  target: {fileID: 0}
   autoInit: 1
