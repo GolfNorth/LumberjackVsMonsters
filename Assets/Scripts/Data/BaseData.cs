@@ -2,7 +2,7 @@
 
 namespace LumberjackVsMonsters
 {
-    public class BaseActor : MonoBehaviour
+    public abstract class BaseData : ScriptableObject
     {
         
     }

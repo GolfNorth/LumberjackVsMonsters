@@ -2,12 +2,13 @@
 
 namespace LumberjackVsMonsters
 {
-    public class FacingBehavior : MonoBehaviour
+    public class FacingBehavior : MonoBehaviour, IInitializable, ILateTickable
     {
         [SerializeField] private Transform target;
-        [SerializeField] private bool isActive;
         [SerializeField] private bool autoInit;
+        private UpdateSystem _updateSystem;
         private GameObject _wrapper;
+        private bool _isActive;
 
         public Transform Target
         {
@@ -17,8 +18,8 @@ namespace LumberjackVsMonsters
 
         public bool IsActive
         {
-            get => isActive;
-            set => isActive = value;
+            get => _isActive;
+            set => _isActive = value;
         }
 
         public bool AutoInit
@@ -27,7 +28,13 @@ namespace LumberjackVsMonsters
             set => autoInit = value;
         }
 
-        private void Awake(){
+        public void Awake()
+        {
+            _updateSystem = Locator.GetSystem<UpdateSystem>();
+        }
+
+        public void Initialize()
+        {
             if (autoInit)
             {
                 var mainCamera = Camera.main;
@@ -35,7 +42,7 @@ namespace LumberjackVsMonsters
                 if (mainCamera != null)
                 {
                     target = mainCamera.transform;
-                    isActive = true;
+                    _isActive = true;
                 }
             }
 
@@ -46,10 +53,20 @@ namespace LumberjackVsMonsters
             _wrapper.transform.position = transform.position;
             transform.parent = _wrapper.transform;
         }
-    
-        private void LateUpdate()
+
+        private void OnEnable()
         {
-            if (!isActive) return;
+            _updateSystem.Add(this);
+        }
+
+        private void OnDisable()
+        {
+            _updateSystem.Remove(this);
+        }
+
+        public void LateTick()
+        {
+            if (!_isActive) return;
         
             var rotation = target.transform.rotation;
             _wrapper.transform.LookAt(_wrapper.transform.position + rotation * Vector3.back, rotation * Vector3.up);
