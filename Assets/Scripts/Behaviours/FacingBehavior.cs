@@ -57,7 +57,7 @@ namespace LumberjackVsMonsters
             var lookPos = target.position - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
-            rotation *= Quaternion.Euler(0, 90, 0);
+            //rotation *= Quaternion.Euler(0, 90, 0);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
         
             //var rotation = target.transform.rotation;

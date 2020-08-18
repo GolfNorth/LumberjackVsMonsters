@@ -1,6 +1,8 @@
-﻿namespace LumberjackVsMonsters
+﻿using UnityEngine;
+
+namespace LumberjackVsMonsters
 {
-    public class Monster
+    public class Monster : MonoBehaviour
     {
         
     }
