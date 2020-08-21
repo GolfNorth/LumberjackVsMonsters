@@ -12,15 +12,15 @@ namespace LumberjackVsMonsters
 
         private sealed class UpdateManagerComponent : MonoBehaviour
         {
-            private readonly HashSet<ITickable> _ticks = new HashSet<ITickable>();
-            private readonly HashSet<ILateTickable> _lateTicks = new HashSet<ILateTickable>();
-            private readonly HashSet<IFixedTickable> _fixedTicks = new HashSet<IFixedTickable>();
+            private readonly List<ITickable> _ticks = new List<ITickable>();
+            private readonly List<ILateTickable> _lateTicks = new List<ILateTickable>();
+            private readonly List<IFixedTickable> _fixedTicks = new List<IFixedTickable>();
 
-            public HashSet<ITickable> Ticks => _ticks;
+            public List<ITickable> Ticks => _ticks;
 
-            public HashSet<ILateTickable> LateTicks => _lateTicks;
+            public List<ILateTickable> LateTicks => _lateTicks;
 
-            public HashSet<IFixedTickable> FixedTicks => _fixedTicks;
+            public List<IFixedTickable> FixedTicks => _fixedTicks;
 
             public void StartNewCoroutine(IEnumerator method)
             {
@@ -29,25 +29,25 @@ namespace LumberjackVsMonsters
 
             private void Update()
             {
-                foreach (var tickable in _ticks)
+                for (var i = 0; i < _ticks.Count; i++)
                 {
-                    tickable.Tick();
+                    _ticks[i]?.Tick();
                 }
             }
 
             private void LateUpdate()
             {
-                foreach (var tickable in _lateTicks)
+                for (var i = 0; i < _lateTicks.Count; i++)
                 {
-                    tickable.LateTick();
+                    _lateTicks[i]?.LateTick();
                 }
             }
 
             private void FixedUpdate()
             {
-                foreach (var tickable in _fixedTicks)
+                for (var i = 0; i < _fixedTicks.Count; i++)
                 {
-                    tickable.FixedTick();
+                    _fixedTicks[i]?.FixedTick();
                 }
             }
         }

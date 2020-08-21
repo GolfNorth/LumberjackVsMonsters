@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace LumberjackVsMonsters
 {
@@ -13,6 +14,8 @@ namespace LumberjackVsMonsters
         private bool _wifeSaid;
         private bool _daughterSaid;
         private bool _sonSaid;
+
+        public event Action DialogEnded;
 
         public void Tick()
         {
@@ -34,6 +37,8 @@ namespace LumberjackVsMonsters
             {
                 sonAudio.PlayDelayed(sonDelay);
                 _sonSaid = true;
+                
+                DialogEnded?.Invoke();
             }
         }
     }

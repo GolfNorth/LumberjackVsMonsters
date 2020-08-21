@@ -5,10 +5,12 @@ namespace LumberjackVsMonsters
 {
     public class House : MonoBehaviour, IInitializable
     {
-        [SerializeField] private int maxHealth = 100;
-        private int _health;
+        [SerializeField] private float maxHealth = 100;
+        private float _health;
 
-        public int Health
+        public event Action HouseDestroyed;
+
+        public float Health
         {
             get => _health;
             set => _health = value;
@@ -17,6 +19,16 @@ namespace LumberjackVsMonsters
         public void Initialize()
         {
             _health = maxHealth;
+        }
+        
+        public void ApplyHit(float damage)
+        {
+            _health -= damage;
+
+            if (_health <= 0)
+            {
+                HouseDestroyed?.Invoke();
+            }
         }
     }
 }

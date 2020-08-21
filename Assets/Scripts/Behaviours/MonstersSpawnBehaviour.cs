@@ -4,11 +4,14 @@ using Random = System.Random;
 
 namespace LumberjackVsMonsters
 {
-    public class MonstersSpawnBehaviour : MonoBehaviour, IInitializable
+    public class MonstersSpawnBehaviour : MonoBehaviour, IInitializable, ITickable
     {
         [SerializeField] private GameObject spawnPoints;
         [SerializeField] private GameObject[] monsterPrefabs;
         [SerializeField] private DoorBehavior doorBehavior;
+        [SerializeField] private float spawnDelay;
+        private float _spawnTimer;
+        private bool _isActive;
         private Random _random;
         private readonly List<Vector3> _spawnPositions = new List<Vector3>();
         
@@ -25,7 +28,20 @@ namespace LumberjackVsMonsters
 
             doorBehavior.DoorOpened += OnDoorOpened;
         }
-        
+
+        public void Tick()
+        {
+            _spawnTimer += Time.deltaTime;
+            
+            if (!_isActive || _spawnTimer < spawnDelay) return;
+            
+            var monster = Instantiate(GetRandomPrefab());
+                
+            monster.transform.position = GetRandomPosition();
+
+            _spawnTimer = 0;
+        }
+
         private void OnDisable()
         {
             doorBehavior.DoorOpened -= OnDoorOpened;
@@ -33,22 +49,17 @@ namespace LumberjackVsMonsters
 
         private void OnDoorOpened()
         {
-            for (var i = 0; i < 20; i++)
-            {
-                var monster = Instantiate(GetRandomPrefab());
-                
-                monster.transform.position = GetRandomPosition();
-            }
+            _isActive = true;
         }
-
-        public Vector3 GetRandomPosition()
+        
+        private Vector3 GetRandomPosition()
         {
             var index = _random.Next(_spawnPositions.Count);
 
             return _spawnPositions[index];
         }
         
-        public GameObject GetRandomPrefab()
+        private GameObject GetRandomPrefab()
         {
             var index = _random.Next(monsterPrefabs.Length);
 

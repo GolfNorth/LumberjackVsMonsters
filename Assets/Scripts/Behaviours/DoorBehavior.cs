@@ -16,6 +16,8 @@ namespace LumberjackVsMonsters
 
         public event Action DoorOpened;
 
+        public bool IsNear => _isNear;
+
         private void OnTriggerEnter(Collider other)
         {
             _isNear = other.gameObject == characterController.gameObject;

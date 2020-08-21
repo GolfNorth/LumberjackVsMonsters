@@ -345,12 +345,13 @@ GameObject:
   - component: {fileID: 8339345045952402127}
   - component: {fileID: 1122198713834662606}
   - component: {fileID: 2648881759673092787}
-  m_Layer: 0
+  - component: {fileID: 1798174883}
+  m_Layer: 10
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6435515818845381381
 Transform:
@@ -435,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac7c1bbeb3a487ab3e95c1f322d054e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 300
 --- !u!114 &1122198713834662606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,6 +467,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f40093ee0d4a258c9e7d0539e989be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1798174883
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243295075096879323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 2, z: 0.75}
+  m_Center: {x: -0.5, y: 1, z: 3}
 --- !u!1 &6714317761367884816
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,7 +745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 166600903494672709, guid: 47ee05c4d8595344cb462101ffebdcbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 166600903494672709, guid: 47ee05c4d8595344cb462101ffebdcbe, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -815,7 +829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1700306794226163790, guid: 571587b9e5ccb484aafb3ee04f599579, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1700306794226163790, guid: 571587b9e5ccb484aafb3ee04f599579, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -903,7 +917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4262320976615478829, guid: 00454f68adbb5734bae8b9be75987778, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4262320976615478829, guid: 00454f68adbb5734bae8b9be75987778, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

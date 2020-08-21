@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 3140196227776445800}
   - component: {fileID: 6350111755450508672}
   - component: {fileID: 9200269999107366970}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -235,6 +235,7 @@ Transform:
   m_Children:
   - {fileID: 560776270646264714}
   - {fileID: 560776271289658802}
+  - {fileID: 6295444434918736787}
   - {fileID: 4337599028795612344}
   - {fileID: 8085744696317929192}
   m_Father: {fileID: 0}
@@ -254,7 +255,7 @@ CharacterController:
   m_Height: 1
   m_Radius: 0.4
   m_SlopeLimit: 1
-  m_StepOffset: 0.1
+  m_StepOffset: 0.25
   m_SkinWidth: 0.05
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.5, z: 0}
@@ -270,9 +271,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab9869679f284629bb6c331015b90b02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  healthRecovery: 2
+  hitCheck: {fileID: 6295444434918736787}
+  hitRadius: 0.25
+  maxHealth: 30
+  healthRecovery: 0.5
   weaponAudio: {fileID: 6971919162841843829}
+  monsterMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &9198951417351271890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +473,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &4860424462611591436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6295444434918736787}
+  m_Layer: 0
+  m_Name: HitCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6295444434918736787
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860424462611591436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.66, z: 0.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 560776272036450555}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5073155540622551957
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +531,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 560776272036450555}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5294711220387641749
 GameObject:
@@ -526,7 +562,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 560776272036450555}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &498699252603306496
 AudioSource:

@@ -6,6 +6,7 @@ namespace LumberjackVsMonsters
     {
         private void Awake()
         {
+            Locator.ClearSystems();
             Locator.SetSystem(new UpdateSystem());
         }
     }

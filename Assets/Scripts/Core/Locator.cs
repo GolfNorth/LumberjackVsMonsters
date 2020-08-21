@@ -4,11 +4,11 @@ namespace LumberjackVsMonsters
 {
     public static class Locator
     {
-        private static readonly Vault<BaseSystem> SystemVault;
+        private static Vault<BaseSystem> SystemVault;
 
         static Locator()
         {
-            SystemVault = new Vault<BaseSystem>();
+            ClearSystems();
         }
         
         public static void SetSystem<T>(T value) where T : class
@@ -19,6 +19,11 @@ namespace LumberjackVsMonsters
         public static T GetSystem<T>() where T : class
         {
             return SystemVault.GetValue<T>();
+        }
+
+        public static void ClearSystems()
+        {
+            SystemVault = new Vault<BaseSystem>();
         }
     }
 }

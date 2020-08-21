@@ -585,6 +585,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1243482136181120568}
   - component: {fileID: 4348246897683957540}
+  - component: {fileID: 451841013890982041}
+  - component: {fileID: 3636344104411422203}
   m_Layer: 0
   m_Name: GameZoneCollider
   m_TagString: Untagged
@@ -620,6 +622,31 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &451841013890982041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4816933990442250528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbfb50b96d334da1b2df5c4b1938cd85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outsideTime: 3
+--- !u!114 &3636344104411422203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4816933990442250528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f40093ee0d4a258c9e7d0539e989be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7443489732929918536
 GameObject:
   m_ObjectHideFlags: 0
